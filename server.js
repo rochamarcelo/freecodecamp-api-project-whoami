@@ -1,9 +1,10 @@
 var express = require('express')
 var app = express()
 app.enable('trust proxy')
+app.use('/static', express.static(__dirname + '/public'))
 
 app.get('/', function (req, res) {
-    res.send("Hello world");
+    res.sendfile(__dirname + '/public/index.html');
 })
 
 app.get('/whoami', function (req, res) {
